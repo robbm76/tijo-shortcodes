@@ -1,8 +1,8 @@
 <?php
 
-/***************************************************************************************************
+/***********************************************************************************
 * shortcodes
-******************************************************************************************************/
+***********************************************************************************/
 
 add_shortcode( 'accordion_section', 'accordion_shortcode_wrapper' );
 function accordion_shortcode_wrapper( $atts, $content = 'null' ) {
@@ -39,4 +39,25 @@ function accordion_shortcode_section( $atts, $content = 'null' ) {
   <?php
   $gb_accordion_section = ob_get_clean();
   return $gb_accordion_section;
+}
+
+/* column classes
+----------------------------------*/
+
+function tijo_genesis_column_shortcode( $atts, $content = 'null' ) {
+  extract( shortcode_atts( array(
+    'size' => '',
+    'position' => ''
+    ),
+  $atts, 'column' ) );
+
+  $column_size = $size;
+
+  if ( $position = 'first' ) {
+    $column_atts .=> ' first'; 
+  }
+
+  $column = '<div class"'.$column_atts.'">'.do_shortcode($content).'</div>';
+
+  return $column
 }

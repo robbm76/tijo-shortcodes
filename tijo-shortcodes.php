@@ -3,7 +3,8 @@
    Plugin Name: Tijo Shortcodes
    Plugin URI: http://wordpress.org/extend/plugins/tijo-shortcodes/
    Version: 1.0
-   Author: <a href="http://tijo.io">Josh Horneck</a>
+   Author: Josh Horneck
+   Author URI: http://tijo.io
    Description: This plugin contains basic shortcodes like tabs, accordions, Genesis columns, buttons and more.
    Text Domain: tijo-shortcodes
    License: GPLv3
