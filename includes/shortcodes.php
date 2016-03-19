@@ -43,7 +43,6 @@ function accordion_shortcode_section( $atts, $content = 'null' ) {
 
 /* column classes
 ----------------------------------*/
-
 function tijo_genesis_column_shortcode( $atts, $content = 'null' ) {
   extract( shortcode_atts( array(
     'size' => '',
@@ -51,13 +50,15 @@ function tijo_genesis_column_shortcode( $atts, $content = 'null' ) {
     ),
   $atts, 'column' ) );
 
-  $column_size = $size;
+  $column_atts = $size;
 
-  if ( $position = 'first' ) {
-    $column_atts .=> ' first'; 
+  if ( $position == 'first' ) {
+    $column_atts .= ' first'; 
   }
 
-  $column = '<div class"'.$column_atts.'">'.do_shortcode($content).'</div>';
+  $column = '<div class="'.$column_atts.'">'.do_shortcode($content).'</div>';
 
-  return $column
+  return $column;
+
 }
+add_shortcode( 'column', 'tijo_genesis_column_shortcode' );
