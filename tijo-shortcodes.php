@@ -15,16 +15,14 @@ if ( !defined( 'ABSPATH' ) ) {
   exit;
 }
 
-//require_once ( plugin_dir_path(__FILE__) . '/includes/shortcodes.php');
+require_once ( plugin_dir_path(__FILE__) . '/includes/shortcodes.php');
 
 // enqueue jqueryui script
 function my_jquery_ui_scripts() {
-    wp_enqueue_script('custom-scripts', get_stylesheet_directory_uri() . '/js/scripts.js', array('jquery'));
-    add_action( 'plugins_loaded', array( 'tijo_shortcodes', 'get_instance' ) );
+    wp_enqueue_script('custom-scripts', plugin_dir_url(__FILE__) . '/js/scripts.js', array('jquery'));
+    add_action( 'plugins_loaded', array( 'tijo-shortcodes', 'get_instance' ) );
 }
 
 add_action('wp_enqueue_scripts', 'my_jquery_ui_scripts');
 
-wp_register_style('jquery-custom-style', get_stylesheet_directory_uri().'/css/jquery-ui.css', array(), '1', 'screen'); 
-wp_enqueue_style('jquery-custom-style');
 

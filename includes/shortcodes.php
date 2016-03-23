@@ -1,8 +1,10 @@
 <?php
-
 /***********************************************************************************
 * shortcodes
 ***********************************************************************************/
+
+/* accordion
+----------------------------------*/
 
 add_shortcode( 'accordion_section', 'accordion_shortcode_wrapper' );
 function accordion_shortcode_wrapper( $atts, $content = 'null' ) {
@@ -41,6 +43,46 @@ function accordion_shortcode_section( $atts, $content = 'null' ) {
   return $gb_accordion_section;
 }
 
+/* tabs
+----------------------------------*/
+
+add_shortcode( 'tabs_section', 'tabs_shortcode_wrapper' );
+function tabs_shortcode_wrapper( $atts, $content = 'null' ) {
+  ob_start();
+  // Load necessary scripts only when shortcode is used
+  wp_enqueue_script( 'jquery-ui-tabs' );
+  ?>
+
+  <div class="gb-tabs">
+    <?php echo do_shortcode($content); ?>
+  </div>
+
+  <?php
+  $gb_tabs_wrapper = ob_get_clean();
+  return $gb_tabs_wrapper;
+}
+
+add_shortcode( 'tabs', 'tabs_shortcode_section' );
+function tabs_shortcode_section( $atts, $content = 'null' ) {
+  extract( shortcode_atts( array(
+    'title' => '',
+    ),
+  $atts, 'gb_tabs_section' ) );
+  ob_start();
+  ?>
+    <p class="gb-tabs-trigger"><?php echo $title; ?></p>
+    <div class="gb-tabs-content">
+      <?php
+        do_action( 'gb_before_tabs_content');
+        echo do_shortcode($content);
+        do_action( 'gb_after_tabs_content' );
+      ?>
+    </div>
+  <?php
+  $gb_tabs_section = ob_get_clean();
+  return $gb_tabs_section;
+}
+
 /* column classes
 ----------------------------------*/
 function tijo_genesis_column_shortcode( $atts, $content = 'null' ) {
@@ -48,17 +90,17 @@ function tijo_genesis_column_shortcode( $atts, $content = 'null' ) {
     'size' => '',
     'position' => ''
     ),
-  $atts, 'column' ) );
+  $atts, 'col' ) );
 
-  $column_atts = $size;
-
+  $col_atts = $size;
+  
   if ( $position == 'first' ) {
-    $column_atts .= ' first'; 
+    $col_atts .= ' first'; 
   }
 
-  $column = '<div class="'.$column_atts.'">'.do_shortcode($content).'</div>';
-
-  return $column;
-
+  $col = '<div class="'.$col_atts.'">'.do_shortcode($content).'</div>';
+  
+  return $col;
 }
-add_shortcode( 'column', 'tijo_genesis_column_shortcode' );
+
+add_shortcode( 'col', 'tijo_genesis_column_shortcode' );

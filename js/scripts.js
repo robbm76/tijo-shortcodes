@@ -1,6 +1,7 @@
 //jquery-ui-tabs
 jQuery(document).ready(function($) {
-  $('.tabs').tabs();
+// Tabs
+$('.tabs').tabs();
 //jquery-ui-accordion
 $(".gb-accordion").accordion( {
 	collapsible: true,
