@@ -24,9 +24,6 @@ require_once( plugin_dir_path( __FILE__ ) . 'core-classes/Taxonomy_Core/Taxonomy
 // Load CPT/tax registration
 require_once ( plugin_dir_path(__FILE__) . '/includes/custom-content.php');
 
-<<<<<<< HEAD
-
-=======
 // enqueue jqueryui script
 function tijo_jqueryui_ui_scripts() {
     wp_enqueue_script('custom-scripts', plugin_dir_url(__FILE__) . '/js/scripts.js', array('jquery'));
@@ -34,4 +31,3 @@ function tijo_jqueryui_ui_scripts() {
 }
 
 add_action('wp_enqueue_scripts', 'tijo_jqueryui_ui_scripts');
->>>>>>> custom-content
