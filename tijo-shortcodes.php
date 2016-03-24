@@ -15,13 +15,6 @@ if ( !defined( 'ABSPATH' ) ) {
   exit;
 }
 
-//custom content
-// Load CPT Helper
-require_once( plugin_dir_path( __FILE__ ) . 'core-classes/CPT_Core/CPT_Core.php' );
-
-// Load Taxonomy Helper
-require_once( plugin_dir_path( __FILE__ ) . 'core-classes/Taxonomy_Core/Taxonomy_Core.php' );
-
 require_once ( plugin_dir_path(__FILE__) . '/includes/shortcodes.php');
 
 // enqueue jqueryui script
