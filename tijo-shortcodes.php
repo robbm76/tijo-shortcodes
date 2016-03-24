@@ -5,8 +5,8 @@
    Version: 1.0
    Author: Josh Horneck
    Author URI: http://tijo.io
-   Description: This plugin contains basic shortcodes like tabs, accordions, Genesis columns, buttons and more.
-   Text Domain: tijo-shortcodes
+   Description: This plugin contains a CPT and Taxonomy generator and basic shortcodes like tabs, accordions, Genesis columns, buttons and more.
+   Text Domain: tijo-custom
    License: GPLv3
   */
 
@@ -14,6 +14,13 @@
 if ( !defined( 'ABSPATH' ) ) {
   exit;
 }
+
+//custom content
+// Load CPT Helper
+require_once( plugin_dir_path( __FILE__ ) . 'core-classes/CPT_Core/CPT_Core.php' );
+
+// Load Taxonomy Helper
+require_once( plugin_dir_path( __FILE__ ) . 'core-classes/Taxonomy_Core/Taxonomy_Core.php' );
 
 require_once ( plugin_dir_path(__FILE__) . '/includes/shortcodes.php');
 
