@@ -15,52 +15,19 @@ if ( !defined( 'ABSPATH' ) ) {
   exit;
 }
 
+// Load Shortcodes
 require_once ( plugin_dir_path(__FILE__) . '/includes/shortcodes.php');
+// Load CPT Helper
+require_once( plugin_dir_path( __FILE__ ) . 'core-classes/CPT_Core/CPT_Core.php' );
+// Load Taxonomy Helper
+require_once( plugin_dir_path( __FILE__ ) . 'core-classes/Taxonomy_Core/Taxonomy_Core.php' );
+// Load CPT/tax registration
+require_once ( plugin_dir_path(__FILE__) . '/includes/custom-content.php');
 
 // enqueue jqueryui script
-function my_jquery_ui_scripts() {
+function tijo_jqueryui_ui_scripts() {
     wp_enqueue_script('custom-scripts', plugin_dir_url(__FILE__) . '/js/scripts.js', array('jquery'));
     add_action( 'plugins_loaded', array( 'tijo-shortcodes', 'get_instance' ) );
 }
 
-add_action('wp_enqueue_scripts', 'my_jquery_ui_scripts');
-
-/***********************************************************************************
-* cpt/taxonomy
-***********************************************************************************/
-
-// Load CPT Helper
-require_once( plugin_dir_path( __FILE__ ) . 'core-classes/CPT_Core/CPT_Core.php' );
-
-// Load Taxonomy Helper
-require_once( plugin_dir_path( __FILE__ ) . 'core-classes/Taxonomy_Core/Taxonomy_Core.php' );
-
-/* Example
-
-// CPT
-register_via_cpt_core(
-  array(
-    'Single',
-    'Plural',
-    'slides'
-  ),
-  array(
-    'menu_icon' => 'dashicons-slides',
-    'publicly_queryable' => false,
-    'supports' => array( 'title', 'editor', 'thumbnail', 'revisions' )
-  )
-);
-
-// Tax
-register_via_taxonomy_core(
-  array(
-    'Single',
-    'Plural',
-    'slug'
-  ),
-  array(),
-  array(
-    'CPT Name'
-  )
-);
-*/
+add_action('wp_enqueue_scripts', 'tijo_jqueryui_ui_scripts');
