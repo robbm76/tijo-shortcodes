@@ -5,3 +5,4 @@ $(".gb-accordion").accordion( {
 	active: false,
 	header: ".gb-accordion-trigger"
 });
+})
